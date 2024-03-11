@@ -495,9 +495,9 @@ Back to a new chapter. In this chapter we will calculate the onset of a flood. I
 
 Do you still remember? 
 
-•	What is Day of Year? 
-•	Answer the following: Today is …. day in the year
-•	Which months is the white volta basin sensitive to flooding?
+-	What is Day of Year? 
+-	Answer the following: Today is `…` day in the year
+-	Which months is the white volta basin sensitive to flooding?
 
 You can use:
 
