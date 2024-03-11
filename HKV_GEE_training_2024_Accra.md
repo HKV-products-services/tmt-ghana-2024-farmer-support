@@ -417,6 +417,7 @@ You settings may now look like this (but make your own choices!):
 ## 3.4	Explore the information about the layer
 
 Now, explore what other information there is about the DoY layer in the tabs of the Layer Properties (open the layer properties by double clicking on the layer in the layers viewer). 
+
 -	What is the extent of the dataset?
 -	What is the pixel size of the raster?
 -	Can you make the layer (partially) transparent? 
@@ -473,11 +474,13 @@ Now that we have these values in Excel, play around analysing the data. What can
 Compose a map containing the DoY of the rainy season onset of (at least) one year. 
 
 A good map should at least contain:
+
 -	Your chosen map view
 -	A north arrow
 -	A scale bar
 -	A title
 -	A legend
+
 How you want to present this, with what layers, what names, etc. is completely up to you! 
 
 We can help you if you have any questions or need any suggestions for your map. 
@@ -491,11 +494,13 @@ Creating a map view in QGIS: Go to the _Layout manager – Create an empty layou
 Back to a new chapter. In this chapter we will calculate the onset of a flood. In this chapter we will do this for a single year. After we understand the principles including the pros and cons we will do it in the next chapter for multiple years. Ready? Lets go!
 
 Do you still remember? 
+
 •	What is Day of Year? 
 •	Answer the following: Today is …. day in the year
 •	Which months is the white volta basin sensitive to flooding?
 
 You can use:
+
 -	https://www.easysurf.cc/wdate5.htm
 
 ## 4.1	Define area and visualise region
@@ -724,7 +729,7 @@ As you can see using the inspector the result is the same in the inspector:
 
 But we have reduced the process for a single image to:
 
-```
+```js
 var ioi_doy_water = processImage(ioi);
 ```
 
@@ -944,7 +949,7 @@ Observe that we have reduced your code to process a single year to only this:
 
 (no need to copy this)
 
-```
+```js
 // define our year of interest
 var year = 2021;
 var processedYear = processYear(year);
@@ -953,13 +958,14 @@ var processedYear = processYear(year);
 Quite awesome! 
 
 Now we can compute it for another year. 2022? 2017? 
+
 But be careful with the defaults!
 
 ## 5.2.	Apply function to multiple years
 
-We define a list of years over we are going to iterate. For each year we will apply our processYear function. We will rename our image so it include the year that we are processing. 
+We define a list of years over we are going to iterate. For each year we will apply our `processYear` function. We will rename our image so it include the year that we are processing. 
 
-How many years are we going to process? Check when the sentinel 1 product starts in full in your value for `startYear`.
+How many years are we going to process? Check when the sentinel 1 product starts and fill in your value for `startYear`.
 
 ```js
 // next is the definition of years that we like to process. 
@@ -983,7 +989,7 @@ You will see that this returns a list with images:
 
 The result is a list of images. but we like to store the image of each year as a band within a single image. To do this we
 1.	first define a single image and
-2.	iterate over our list of images and 
+2.	iterate over our remaining list of images and 
 3.	add this to our defined initial image
 
 ```js
