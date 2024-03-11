@@ -1,40 +1,40 @@
 
-- [1. Day of Year (DoY) rainfall onset](#1day-of-year-doy-rainfall-onset)
+- [1. Day of Year (DoY) rainfall onset](#1-day-of-year-doy-rainfall-onset)
    * [1.1.	Define area and load data](#11define-area-and-load-data)
    * [1.2.	Sum the data and create a mask](#12sum-the-data-and-create-a-mask)
    * [1.3.	Cumulative precipitation in a function](#13cumulative-precipitation-in-a-function)
-- [2	Day of Year (DoY) rainfall onset for multiple years](#2day-of-year-doy-rainfall-onset-for-multiple-years)
+- [2.	Day of Year (DoY) rainfall onset for multiple years](#2day-of-year-doy-rainfall-onset-for-multiple-years)
    * [2.1.	Define area of interest and select values](#21define-area-of-interest-and-select-values)
    * [2.2.	Define a function to calculate DoY for multiple years](#22define-a-function-to-calculate-doy-for-multiple-years)
-   * [2.3	Create a collection of images](#23create-a-collection-of-images)
-   * [2.4 Store the images](#24store-the-images)
+   * [2.3.	Create a collection of images](#23create-a-collection-of-images)
+   * [2.4.  Store the images](#24-store-the-images)
    * [2.5.	Create the images and add them to the map](#25create-the-images-and-add-them-to-the-map)
-   * [2.6 Export results](#26export-results)
-   * [2.7. Histogram](#27histogram)
-   * [2.8. Bonus: visualisation of results in Vega-Altair](#28bonus-visualisation-of-results-in-vega-altair)
-- [3. Analysis and visualisation of rainfall onset in GIS](#3analysis-and-visualisation-of-rainfall-onset-in-gis)
+   * [2.6.  Export results](#26-export-results)
+   * [2.7.  Histogram](#27-histogram)
+   * [2.8.  Bonus: visualisation of results in Vega-Altair](#28-bonus-visualisation-of-results-in-vega-altair)
+- [3. Analysis and visualisation of rainfall onset in GIS](#3-analysis-and-visualisation-of-rainfall-onset-in-gis)
    * [Type of GIS software**](#type-of-gis-software)
-   * [3.1	Importing results in GIS](#31importing-results-in-gis)
-   * [3.2	Add a background](#32add-a-background)
-   * [3.3	Visualise the DoY layer](#33visualise-the-doy-layer)
-   * [3.4	Explore the information about the layer](#34explore-the-information-about-the-layer)
-   * [3.5	Analyse the data in the DoY raster layer](#35analyse-the-data-in-the-doy-raster-layer)
-   * [3.6	Sample raster values in point layer](#36sample-raster-values-in-point-layer)
-   * [3.7	Analyse the results in Excel](#37analyse-the-results-in-excel)
-   * [3.8	Composing maps](#38composing-maps)
+   * [3.1.	Importing results in GIS](#31importing-results-in-gis)
+   * [3.2.	Add a background](#32add-a-background)
+   * [3.3.	Visualise the DoY layer](#33visualise-the-doy-layer)
+   * [3.4.	Explore the information about the layer](#34explore-the-information-about-the-layer)
+   * [3.5.	Analyse the data in the DoY raster layer](#35analyse-the-data-in-the-doy-raster-layer)
+   * [3.6.	Sample raster values in point layer](#36sample-raster-values-in-point-layer)
+   * [3.7.	Analyse the results in Excel](#37analyse-the-results-in-excel)
+   * [3.8.	Composing maps](#38composing-maps)
 - [4.	Day of Year (DoY) flood onset](#4day-of-year-doy-flood-onset)
-   * [4.1	Define area and visualise region](#41define-area-and-visualise-region)
-   * [4.2	Define ImageCollection](#42define-imagecollection)
-   * [4.3	Visualise a SAR Image](#43visualise-a-sar-image)
-   * [4.4	Focal Statistics and Morphological Operations Theory](#44focal-statistics-and-morphological-operations-theory)
-   * [4.5	Focal Statistics and Morphological Operations Code](#45focal-statistics-and-morphological-operations-code)
-   * [4.6	Flood onset Day of Year](#46flood-onset-day-of-year)
-   * [4.7	Flood onset Day of Year by Function](#47flood-onset-day-of-year-by-function)
-   * [4.8	Apply Function to ImageCollection](#48apply-function-to-imagecollection)
-   * [4.9	Reduce ImageCollection to image with first day of year with water](#49reduce-imagecollection-to-image-with-first-day-of-year-with-water)
-   * [4.10	Beautified code](#410beautified-code)
+   * [4.1.	Define area and visualise region](#41define-area-and-visualise-region)
+   * [4.2.	Define ImageCollection](#42define-imagecollection)
+   * [4.3.	Visualise a SAR Image](#43visualise-a-sar-image)
+   * [4.4.	Focal Statistics and Morphological Operations Theory](#44focal-statistics-and-morphological-operations-theory)
+   * [4.5.	Focal Statistics and Morphological Operations Code](#45focal-statistics-and-morphological-operations-code)
+   * [4.6.	Flood onset Day of Year](#46flood-onset-day-of-year)
+   * [4.7.	Flood onset Day of Year by Function](#47flood-onset-day-of-year-by-function)
+   * [4.8.	Apply Function to ImageCollection](#48apply-function-to-imagecollection)
+   * [4.9.	Reduce ImageCollection to image with first day of year with water](#49reduce-imagecollection-to-image-with-first-day-of-year-with-water)
+   * [4.10.	Beautified code](#410beautified-code)
 - [5.	Do it for multiple years](#5do-it-for-multiple-years)
-   * [5.1	Define function to process a single year](#51define-function-to-process-a-single-year)
+   * [5.1.	Define function to process a single year](#51define-function-to-process-a-single-year)
    * [5.2.	Apply function to multiple years](#52apply-function-to-multiple-years)
    * [5.3.	From list of images to bands in single image](#53from-list-of-images-to-bands-in-single-image)
    * [5.4.	Visualize each band as a single layer](#54visualize-each-band-as-a-single-layer)
@@ -50,11 +50,14 @@ In training 1 we already looked into the onset of the rainy season for northern 
 
 ## 1.1.	Define area and load data
 We start with a new script. In this script we create a polygon that defines northern Ghana. 
-![image](https://gist.github.com/assets/5186265/a71f080d-0132-46e4-b752-49132d177b7a)
+
+![image](https://github.com/HKV-products-services/tmt-ghana-2024-farmer-support/assets/5186265/ab97332b-45b9-4e87-bdf9-43def9cd5c48)
+
 
 Import your polygon as a variable (call it _northern_Ghana_) and center and zoom your map.
 Your result might look like this: 
-![image](https://gist.github.com/assets/5186265/3af3b472-d555-4e03-8957-ec1f99753ce5)
+
+![image](https://github.com/HKV-products-services/tmt-ghana-2024-farmer-support/assets/5186265/da1f6313-aa14-4221-a47a-80a6209fe50c)
 
 Next, we read the daily CHIRPS data for 2022 for the selected area. To see what data we imported, we print the result and add the first image to the map. Check the results, for example the number of images in the image collection. Do the results match your expectations?
 
@@ -158,7 +161,7 @@ Map.addLayer(doy_threshold,
 
 Your result should look something like this:
 
-![image](https://gist.github.com/assets/5186265/b8e2c53b-0d01-43f1-ad10-599693d4bf59)
+![image](https://github.com/HKV-products-services/tmt-ghana-2024-farmer-support/assets/5186265/788507ed-0502-4ed6-8f08-a515a1e8d5fe)
 
 **Additional exercise: Redo this assignment with a threshold of 70 mm and analyse the difference with the 50 mm threshold in terms of rainfall onset.**
 
@@ -285,9 +288,9 @@ To avoid issues with this: do not zoom in or out once you run the rest of the sc
 
 Once all layers are computed (no grey colours in the Layers menu), you can slide all opacity sliders to zero. Then start from the bottom and turn them one-by-one to full. Like this you can see the variation over the years. 
 
-![image](https://gist.github.com/assets/5186265/d03d2d2c-11c1-4aed-b1e1-ddee1a61ad6a)
+![image](https://github.com/HKV-products-services/tmt-ghana-2024-farmer-support/assets/5186265/db743dea-b1f1-40dd-8064-13cb260d036c)
 
-![image](https://gist.github.com/assets/5186265/dd5f9ce9-d8d5-4f50-a7ef-a1e18ddf0d09)
+![image](https://github.com/HKV-products-services/tmt-ghana-2024-farmer-support/assets/5186265/eae22962-7d6b-4598-9ca0-a591f1cbfea6)
 
 ```js
 // Get the band names of the image, this should contain all years
@@ -357,7 +360,7 @@ QGIS installation (if needed)
 
 If you decide to work with QGIS, you can work with any version of QGIS. If you still need to install QGIS, we advice you to download the long-term release (stable version). The latest stable version of QGIS is 3.34. You can find it here: https://qgis.org/en/site/forusers/download.html# Make sure to click “Get QGIS 3.34”. 
 
-![image](https://gist.github.com/assets/5186265/8ad4d0b4-af89-44e0-bc42-45a49daa2268)
+![image](https://github.com/HKV-products-services/tmt-ghana-2024-farmer-support/assets/5186265/4e5a7a3b-9714-4277-b7fc-7d9d046f0248)
 
 ## 3.1	Importing results in GIS
 
@@ -366,13 +369,13 @@ After placing the file in the desired folder (e.g. make a folder named “Traini
 
 - Drag and drop from your folder into QGIS
 
-![image](https://gist.github.com/assets/5186265/a05c4c06-722e-42ea-bdf8-cd88fd0e9154)
+![image](https://github.com/HKV-products-services/tmt-ghana-2024-farmer-support/assets/5186265/5875f8bf-fe73-4998-a742-03ae304ee981)
 
 - Import via Layer _– Add layer – Add raster layer_
 
-![image](https://gist.github.com/assets/5186265/97d985aa-9ac6-49e4-b693-59c2bd6b466c)
+![image](https://github.com/HKV-products-services/tmt-ghana-2024-farmer-support/assets/5186265/e0a5b63b-b66a-4088-a0f3-b46eaeb16b49)
 
-![image](https://gist.github.com/assets/5186265/89372440-72ca-4413-97a7-75faf27f967a)
+![image](https://github.com/HKV-products-services/tmt-ghana-2024-farmer-support/assets/5186265/efec6e99-f8b8-4878-85b6-152b499efb6c)
 
 You will see that QGIS assigned RGB colours to bands, creating some kind of art on a white map.
 
@@ -380,11 +383,11 @@ You will see that QGIS assigned RGB colours to bands, creating some kind of art 
 
 First of all, to check if we imported data that is in the correct location, we will **add a background map: OpenStreetMap**. You can add this map via the OpenLayersPlugin. If you don’t have this plugin yet, we will first have to install it via _Plugins – Manage and install plugins_. Search for the OpenLayersPlugin and install it. 
 
-![image](https://gist.github.com/assets/5186265/928f8a3c-e789-4481-bbda-3b65cdaa38d1)
+![image](https://github.com/HKV-products-services/tmt-ghana-2024-farmer-support/assets/5186265/b9a06d02-e172-4e85-b278-5a187e27eaff)
 
 If it is installed, you can add the OpenStreetMap layer to your project via _Web – OpenLayersPlugin – OpenStreetMap_. The layer will appear in the layers view on the left. You can drag and drop it below the other layer, so they are in the right order on the map: the **DoY should be projected over the OpenStreetMap**.
 
-![image](https://gist.github.com/assets/5186265/0b9d7a8b-51b7-406e-82dd-f143a4fa3b09)
+![image](https://github.com/HKV-products-services/tmt-ghana-2024-farmer-support/assets/5186265/837f0960-3630-493b-8c0b-5645caa98a9f)
 
 By scrolling in the map view you can zoom in and out. **You can see that the layer is in the right position (if all went well)**. 
 
@@ -404,7 +407,7 @@ Change the _Render type_ to _Singleband pseudocolor_. Do you get what that means
 
 We will now have to choose a band to visualise and Min/Max value settings. We will start off with a random band. Click through the bands. Do you see what happens to the min/max? It might change depending on the band you click and depending on the settings. We want to choose a min/max that is representative for all bands so we can compare the different bands. To check what would be appropriate min/max values, we will analyse this plot of our data (analysed in the bonus question): 
 
-![image](https://gist.github.com/assets/5186265/69b085f8-5d13-49dc-934e-b076faba8e46)
+![image](https://github.com/HKV-products-services/tmt-ghana-2024-farmer-support/assets/5186265/70c52d9d-f8dd-440a-bcdd-e6dbbf7c9cbc)
 
 Choose a min/max that are appropriate for all/most bands and use this in the layer visualisation. Make sure to make the min/max settings “user defined” (expand this menu). Otherwise the min/max might change per band. 
 
@@ -412,7 +415,7 @@ Now choose a color ramp of your choice.
 
 You settings may now look like this (but make your own choices!): 
 
-![image](https://gist.github.com/assets/5186265/753de785-4957-4248-9a88-0f31cdddf573)
+![image](https://github.com/HKV-products-services/tmt-ghana-2024-farmer-support/assets/5186265/9d47a3d6-11fb-426b-ad4c-1e987d985707)
 
 ## 3.4	Explore the information about the layer
 
@@ -451,13 +454,13 @@ We can make a vector layer with points by:
 _Layer – Create layer – New geopackage layer_. 
 Define the location where to store the layer (in de map you made), select that you want to make a layer with point geometries and make the layer by clicking ok. Now that we have made this layer, we can add points by selecting the layer on the layers panel, and then select _Toggle editing_ and _Add point feature_. Now you can click on the map where you want to add point features. We will do this along the White Volta at +/- 8 to 10 locations that we will analyse. When you are finished, deselect _Toggle editing_ and save your changes of the layer. Also save the project.
 
-![image](https://gist.github.com/assets/5186265/199a13bc-fffb-4c70-8aba-c1e31de3b97b)
+![image](https://github.com/HKV-products-services/tmt-ghana-2024-farmer-support/assets/5186265/6e556ae4-8197-4fa0-9985-d90a1d153605)
 
 Now we will combine the raster and point information by sampling raster values at the points. We do this by going to the processing toolbox  . A new window will appear. Have a look what is possible. 
 
 Now search for “sample” and look for the Sample raster values function. We now sample the values of the raster bands of the original DoY layer for the point that we just created. Make sure to store your sampled new layer as gpkg (GeoPackage). Give it a name so you understand what you did. 
 
-![image](https://gist.github.com/assets/5186265/63939edb-5d89-4f26-a355-62011db7c13e)
+![image](https://github.com/HKV-products-services/tmt-ghana-2024-farmer-support/assets/5186265/22e20c5d-8a6b-4529-836e-3d752580f92b)
 
 Analyse your new layer. What do you see and what data do we have now? For example in the attribute table? 
 
@@ -465,7 +468,7 @@ Analyse your new layer. What do you see and what data do we have now? For exampl
 
 Now that you have analyzed this in QGIS, it might be easy to get an overview of these results. We will analyse this in Excel. We can do this by opening the attribute table of the new point layer with sampled values, then selecting all cells and copying their values (ctrl + c). Paste this in a new excel file. 
 
-![image](https://gist.github.com/assets/5186265/d167ddfa-8d79-4059-ab92-c6a2a2eb7654)
+![image](https://github.com/HKV-products-services/tmt-ghana-2024-farmer-support/assets/5186265/e9d1e560-a281-4821-9dd5-142f7516931b)
 
 Now that we have these values in Excel, play around analysing the data. What can you learn and how? For example, play around with finding maximum, minimum, average, but also visualizing, plotting in graphs etc. Have fun and be critical of what you see!
 
@@ -487,7 +490,7 @@ We can help you if you have any questions or need any suggestions for your map.
 
 Creating a map view in QGIS: Go to the _Layout manager – Create an empty layout – Name it something like “DoY map”_. We can now compose a map. The buttons on the left of the map composer will be of great help to add all elements to your map. In the windows on the right you can adjust all the settings of the elements in your map. 
 
-![image](https://gist.github.com/assets/5186265/048ea4f7-3a96-41c2-932b-4d2833561100)
+![image](https://github.com/HKV-products-services/tmt-ghana-2024-farmer-support/assets/5186265/30c0269e-781b-4bc4-bd2e-432795a23839)
 
 # 4.	Day of Year (DoY) flood onset
 
@@ -521,7 +524,7 @@ Map.centerObject(aoi_whitevoltabasin, 7)
 
 The result will look like this:
 
-![image](https://gist.github.com/assets/5186265/549ad178-16af-4233-8be1-a761ae3d23a2)
+![image](https://github.com/HKV-products-services/tmt-ghana-2024-farmer-support/assets/5186265/5f463720-096f-4872-9f04-56b9cc7f3892)
 
 ## 4.2	Define ImageCollection
 
@@ -547,7 +550,7 @@ print(im_coll)
 
 The result will look like this:
 
-![image](https://gist.github.com/assets/5186265/baa56a61-6d69-424e-a033-02c1a623e37a)
+![image](https://github.com/HKV-products-services/tmt-ghana-2024-farmer-support/assets/5186265/1944d662-83c0-40ed-9058-29019058a9b8)
 
 So what do we do here?
 Can you explain in your own words what the following means:
@@ -605,29 +608,30 @@ Question, using this code, :
 
 Nice looking SAR picture:
 
-![image](https://gist.github.com/assets/5186265/d1e07d39-3d03-4f1d-b028-cc7c19daffbd)
+![image](https://github.com/HKV-products-services/tmt-ghana-2024-farmer-support/assets/5186265/c863cea1-9c08-4e95-9d2a-095838cdcbf1)
 
 Use the point inspector and check for a fews pixels what is the value of what you think represents water and what you think represents crops.
 
-![image](https://gist.github.com/assets/5186265/68ff672b-9887-488d-876c-bba8ff197b6f)
+![image](https://github.com/HKV-products-services/tmt-ghana-2024-farmer-support/assets/5186265/5dd08fd2-f1ee-481e-a071-6a4a0efd83b1)
 
 ## 4.4	Focal Statistics and Morphological Operations Theory
 
 SAR data is a bit noisy. So we add some filters to smooth the image. We will use focal statistics and morphological operations for this. In particular it will be a focal median smoothing and apply a dilation as morphological operation.
 
-![image](https://gist.github.com/assets/5186265/97edb4d1-6716-4b22-ac1a-1b70157755fa)
+![image](https://github.com/HKV-products-services/tmt-ghana-2024-farmer-support/assets/5186265/25fdf933-0994-4ab4-a8c6-511a1cfac25d)
 
-What is the median of the following range?  0,1,2,2,3,3,4,4,5
+What is the median of the following range?  `0, 1, 2, 2, 3, 3, 4, 4, 5`
 
 Morphological operations:
-![image](https://gist.github.com/assets/5186265/edb2a0fd-2f37-416f-aa99-f551119f807a)
+
+![image](https://github.com/HKV-products-services/tmt-ghana-2024-farmer-support/assets/5186265/12720db3-d5d1-46fb-ab1a-8d4db4a57883)
 
 In this case we will use a dilation as morphological operation. 
 See also https://link.springer.com/chapter/10.1007/978-3-031-26588-4_10 
 
-![image](https://gist.github.com/assets/5186265/0804220d-7d53-4e80-ae72-0714dbd92249)
+![image](https://github.com/HKV-products-services/tmt-ghana-2024-farmer-support/assets/5186265/167472b7-ef38-43b5-a003-1a76465bd713)
 
-![image](https://gist.github.com/assets/5186265/2f06e4a4-d470-4ba3-85b9-47b21d2ffef1)
+![image](https://github.com/HKV-products-services/tmt-ghana-2024-farmer-support/assets/5186265/b5efa2fb-26d4-48a6-9830-65323a2d9b25)
 
 ## 4.5	Focal Statistics and Morphological Operations Code
 
@@ -659,7 +663,7 @@ Map.addLayer(maskedImage.clip(aoi_whitevoltabasin), vizParamsWater, 'Water Smoot
 
 The result will look like this
 
-![image](https://gist.github.com/assets/5186265/57542d2b-da77-477a-81d1-ea68b4a7fe45)
+![image](https://github.com/HKV-products-services/tmt-ghana-2024-farmer-support/assets/5186265/600e5ea7-2b16-4dac-b2e4-9b80afd625cb)
 
 ## 4.6	Flood onset Day of Year
 
@@ -680,7 +684,7 @@ Map.addLayer(doyImage.clip(aoi_whitevoltabasin), vizDoY, 'DoY Water Smoothed')
 
 From the layer you will not see a big difference. Just another layer with a similar color as the smoothed water layer. But now inspect a few points and you will see something like this:
 
-![image](https://gist.github.com/assets/5186265/30d75b18-dc30-4142-a6b8-3060130603b8)
+![image](https://github.com/HKV-products-services/tmt-ghana-2024-farmer-support/assets/5186265/2e21babb-50cb-4b56-b920-b23e4ea97fe4)
 
 We have burned the day of year into each pixel that is detected as water.
 
@@ -725,7 +729,7 @@ Map.addLayer(ioi_doy_water.select('doy_water').clip(aoi_whitevoltabasin), vizDoY
 
 As you can see using the inspector the result is the same in the inspector:
 
-![image](https://gist.github.com/assets/5186265/5d10dea3-a08c-4af7-a1c6-c01e7a2e9fcc)
+![image](https://github.com/HKV-products-services/tmt-ghana-2024-farmer-support/assets/5186265/52b68351-63ba-47db-98ca-038dccc30a29)
 
 But we have reduced the process for a single image to:
 
@@ -747,7 +751,7 @@ print(combinedCollection)
 Awesome, awesome, awesome. All this difficult matter reduced to a single line of code!
 Inspect that we have added a band doy_water to each image in the imageCollection:
 
-![image](https://gist.github.com/assets/5186265/60c197e6-2403-4e2b-adbf-98cbb00d7522)
+![image](https://github.com/HKV-products-services/tmt-ghana-2024-farmer-support/assets/5186265/71f15646-737c-4929-a7df-f5ff0efa09d1)
 
 ## 4.9	Reduce ImageCollection to image with first day of year with water
 
@@ -764,7 +768,7 @@ Map.addLayer(yearImage.clip(aoi_whitevoltabasin), vizDoY, "Flood onset single ye
 
 The result will look like this:
 
-![image](https://gist.github.com/assets/5186265/79e43de1-7f77-4357-938e-5fb27f8d34b4)
+![image](https://github.com/HKV-products-services/tmt-ghana-2024-farmer-support/assets/5186265/98474977-c203-4b30-8a70-35a9cecb5417)
 
 Beautiful!
 Can you interpret the map in your own words:
@@ -783,7 +787,7 @@ var histogram = ui.Chart.image.histogram(yearImage, aoi_whitevoltabasin, 100);
 print(histogram);
 ```
 
-![image](https://gist.github.com/assets/5186265/7c4eafbe-8ba3-46f3-b1e1-dfbc9a4437b8)
+![image](https://github.com/HKV-products-services/tmt-ghana-2024-farmer-support/assets/5186265/1217acc2-e5a9-4fd1-be25-e8cf053fa495)
 
 What do you think now? Does this change your interpretation?
 
@@ -983,7 +987,7 @@ print(imagesYears)
 
 You will see that this returns a list with images:
 
-![image](https://gist.github.com/assets/5186265/675381bc-b2b4-4850-ad32-5540b2e926ec)
+![image](https://github.com/HKV-products-services/tmt-ghana-2024-farmer-support/assets/5186265/1bd54131-032f-4606-afa1-31bd16effecb)
 
 ## 5.3.	From list of images to bands in single image
 
@@ -1012,7 +1016,7 @@ print('Combined Image', combinedImage);
 
 So from a list of images we went to a single image with a band for each year:
 
-![image](https://gist.github.com/assets/5186265/cb8f1a79-a88a-45d3-b636-2dee58788447)
+![image](https://github.com/HKV-products-services/tmt-ghana-2024-farmer-support/assets/5186265/886f878d-92a3-4dba-9eba-b51f950d7b9a)
 
 ## 5.4.	Visualize each band as a single layer
 
@@ -1035,7 +1039,7 @@ bandNames.evaluate(function(names) {
 });
 ```
 
-![image](https://gist.github.com/assets/5186265/7c5c0e11-3c1f-4900-ae31-1b066956cc0d)
+![image](https://github.com/HKV-products-services/tmt-ghana-2024-farmer-support/assets/5186265/8344ae40-6acb-45d0-a4f6-aa3dbacd9699)
 
 Instead of turning on and off layers. It is better to reduce opacity of all years that you are not interested in and only increase the opacity of the year of interest.
 
@@ -1067,9 +1071,10 @@ We have defined a scale of 20 meters.
 
 Run the code and run the task within the tasks tab
 
-![image](https://gist.github.com/assets/5186265/5dece5f7-0c49-434d-94d4-097cf3fa1e20)
+![image](https://github.com/HKV-products-services/tmt-ghana-2024-farmer-support/assets/5186265/a3fe5616-9c2b-4dac-9b55-6b28bcba26a3)
 
-You've manifested your inner coding guru! 
+**You've manifested your inner coding guru!**
+
 From now on you will be guiding the way for the rest with your skills and expertise!
 
 ## 5.6.	Everything of chapter 4 & 5 in once
